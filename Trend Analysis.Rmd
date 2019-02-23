@@ -1,0 +1,64 @@
+---
+title: "Trend Analysis"
+author: "Othon Hamill"
+date: "2/22/2019"
+output: word_document
+---
+
+List Assumptions:
+The 6 books of business are independent of each other
+
+
+Import the 6 Books of Business from the .csv files
+```{r}
+BB1<-read.csv("BB1.csv", header=TRUE)
+BB2<-read.csv("BB2.csv", header=TRUE)
+BB3<-read.csv("BB3.csv", header=TRUE)
+BB4<-read.csv("BB4.csv", header=TRUE)
+BB5<-read.csv("BB5.csv", header=TRUE)
+BB6<-read.csv("BB6.csv", header=TRUE)
+```
+
+While noting that Q1 is the 1st quarter of 2009 and Q36 is the 4th quarter of 2017, we reassign quarter names
+```{r}
+BB1$Accident.Quarter<-c(1:36)
+BB2$Accident.Quarter<-c(1:36)
+BB3$Accident.Quarter<-c(1:36)
+BB4$Accident.Quarter<-c(1:36)
+BB5$Accident.Quarter<-c(1:36)
+BB6$Accident.Quarter<-c(1:36)
+```
+
+
+Graph them all to get a general view of the trend, then run our standard linear model
+```{r}
+#BB1
+plot(BB1$Accident.Quarter, BB1$Claims, type="b", main = "Book of Business #1")
+BB1Fit<-lm(BB1$Claims~BB1$Accident.Quarter)
+abline(coef(BB1Fit), col="dodgerblue", lwd=2)
+
+#BB2
+plot(BB2$Accident.Quarter, BB2$Claims, type="b", main = "Book of Business #2")
+BB2Fit<-lm(BB2$Claims~BB2$Accident.Quarter)
+abline(coef(BB2Fit), col="dodgerblue", lwd=2)
+
+#BB3
+plot(BB3$Accident.Quarter, BB3$Claims, type="b", main = "Book of Business #3")
+BB3Fit<-lm(BB3$Claims~BB3$Accident.Quarter)
+abline(coef(BB3Fit), col="dodgerblue", lwd=2)
+
+#BB4
+plot(BB4$Accident.Quarter, BB4$Claims, type="b", main = "Book of Business #4")
+BB4Fit<-lm(BB4$Claims~BB4$Accident.Quarter)
+abline(coef(BB4Fit), col="dodgerblue", lwd=2)
+
+#BB5
+plot(BB5$Accident.Quarter, BB5$Claims, type="b", main = "Book of Business #5")
+BB5Fit<-lm(BB5$Claims~BB5$Accident.Quarter)
+abline(coef(BB5Fit), col="dodgerblue", lwd=2)
+```
+
+
+
+
+
